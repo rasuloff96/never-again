@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="uz">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Faqatgina Biz Uchun ✨</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Arial, sans-serif;
+            background: linear-gradient(135deg, #fbc2eb 0%, #a6c1ee 100%);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            color: #4a4a4a;
+        }
+
+        .card {
+            background: white;
+            padding: 35px;
+            border-radius: 30px;
+            box-shadow: 0 15px 35px rgba(166, 193, 238, 0.4);
+            width: 90%;
+            max-width: 420px;
+            text-align: center;
+            border: 1px solid #e2e8f0;
+            position: relative;
+        }
+
+        .page {
+            display: none;
+        }
+
+        .active {
+            display: block;
+            animation: popIn 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        h2 {
+            color: #5a51de;
+            font-size: 24px;
+            margin-bottom: 12px;
+        }
+
+        p {
+            font-size: 16px;
+            line-height: 1.6;
+            color: #57606f;
+        }
+
+        input,
+        textarea,
+        select {
+            width: 100%;
+            padding: 14px;
+            margin: 12px 0;
+            border: 2px solid #edf2f7;
+            border-radius: 15px;
+            box-sizing: border-box;
+            font-size: 16px;
+            outline: none;
+            transition: 0.3s;
+        }
+
+        input:focus,
+        textarea:focus {
+            border-color: #5a51de;
+            background-color: #f7fafc;
+        }
+
+        button {
+            background: linear-gradient(to right, #5a51de, #7f78f1);
+            color: white;
+            border: none;
+            padding: 14px 25px;
+            font-size: 18px;
+            border-radius: 50px;
+            cursor: pointer;
+            margin-top: 15px;
+            width: 100%;
+            box-shadow: 0 5px 15px rgba(90, 81, 222, 0.3);
+            transition: 0.3s;
+        }
+
+        button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(90, 81, 222, 0.5);
+        }
+
+        .hint-text {
+            font-size: 14px;
+            color: #38a169;
+            font-weight: 500;
+            margin-top: -5px;
+            margin-bottom: 10px;
+        }
+
+        .result-box {
+            background: #f7fafc;
+            padding: 20px;
+            border-radius: 20px;
+            text-align: left;
+            margin-top: 15px;
+            border: 2px dashed #5a51de;
+        }
+
+        .error-msg {
+            color: #e53e3e;
+            font-size: 15px;
+            font-weight: 500;
+            margin-top: 10px;
+            display: none;
+        }
+
+        .emoji-deco {
+            font-size: 40px;
+            margin-bottom: 10px;
+        }
+
+        /* 2.5-Sahifadagi tugmalarni yonma-yon qilish uchun */
+        .btn-group {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .btn-group button {
+            margin-top: 0;
+        }
+
+        .btn-no {
+            background: linear-gradient(to right, #a0aec0, #cbd5e0);
+            box-shadow: 0 5px 15px rgba(160, 174, 192, 0.3);
+        }
+
+        .btn-no:hover {
+            box-shadow: 0 8px 20px rgba(160, 174, 192, 0.5);
+        }
+
+
+        @keyframes popIn {
+            0% {
+                opacity: 0;
+                transform: scale(0.8);
+            }
+
+            100% {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="card">
+        <!-- PAGE 1: XORIJY KISHILARDAN HIMOYA -->
+        <div id="page1" class="page active">
+            <div class="emoji-deco">🔑</div>
+            <h2>Kichik bir maxfiylik...</h2>
+            <p>Xush kelibsiz! Begona qizlardan himoya tizimi. Uni
+                ochish uchun ma'lumotlarni kiritishingiz so'raladi 😊. Login va Parol bu siz haqizda man biladigan
+                ma'lumotlardan olingan. Balki instagramingizning qayerigadur yozib qoygandursiz!</p>
+
+            <input type="text" id="loginName" placeholder="Login" oninput="showHintName()">
+            <div id="hintName" class="hint-text"></div>
+
+            <input type="tel" id="loginPhone" placeholder="Parol">
+            <div id="loginError" class="error-msg">Ism yoki telefon raqami mos kelmadi. Iltimos, qaytadan tekshirib
+                ko'ring-a? 🕵️‍♂️</div>
+            <button onclick="handleLogin()">Davom etish 🔓</button>
+        </div>
+
+        <!-- PAGE 2: SOVG'ANI TAFTISH QILISH -->
+        <div id="page2" class="page">
+            <div class="emoji-deco">🎁</div>
+            <h2>Mini so'rovnoma</h2>
+            <p>Xo'sh, Qurutni tamiga baho bering. Sizga yoqgan yoqmaganini bilishim uchun.</p>
+
+            <label for="rating" style="font-weight: 500; display: block; margin-top: 10px; text-align: left;">Sizning
+                bahoingiz:</label>
+            <select id="rating">
+                <option value="10">10</option>
+                <option value="9">9</option>
+                <option value="8">8</option>
+                <option value="7">7</option>
+                <option value="5">5</option>
+            </select>
+
+            <textarea id="review" rows="4" placeholder="Ikki og'iz fikringiz bilan bolishib keting... 😊"
+                required></textarea>
+            <button onclick="saveRating()">Davom etish ➡️</button>
+        </div>
+
+        <!-- NEW PAGE 2.5: INTERAKTIV OGOHLANTIRISH -->
+        <div id="pageWarn" class="page">
+            <div class="emoji-deco">🛋️</div>
+            <h2>Kichik eslatma...</h2>
+            <p id="warnText">Keyingi sahifaga o'tishdan oldin joyingizga yaxshilab joylashib oling, sizda ozgina gapim
+                bor edi. Xo'sh, tayyormisiz? 😊</p>
+
+            <div class="btn-group">
+                <button id="btnYes" onclick="handleYesClick()">Ha 👍</button>
+                <button id="btnNo" onclick="handleNoClick()" class="btn-no">Yo'q 👎</button>
+            </div>
+        </div>
+
+
+        <!-- PAGE 3: SAMIYY ISHOR -->
+        <div id="page3" class="page">
+            <h2>Yurakdan chiqgan lekin to‘g‘ridan to‘g‘ri o'zingizga ayta olmagan gaplarim.</h2>
+            <p>Bilasizmi, men tabiatan biroz tortinchoqroq insonman. Balki shu sabab ko‘zlaringizga qarab aytolmagan
+                gaplarimni shu yerda yozayotgandirman…
+                Siz bilan ko‘rishgan kun negadir oddiy kun bo‘lib qolmadi. Suhbatlaringiz, kulishingiz, muomalangiz —
+                bularning bari yuragimda iliq hissiyot qoldirdi. Rostini aytsam, siz menga haqiqatdan ham yoqasiz… 
+                Ha, to‘g‘ri, yosh borasida farq bo‘lishi mumkin. Lekin meningcha, bu hislar oldida unchalik ahamiyatli
+                emas. Chunki men uchun insonning qalbi, samimiyligi va yonida o‘zingni qanday his qilishing muhimroq.
+                Va men sizning yoningizda o‘zimni juda yaxshi his qildim. Balki bu yozganlarim siz uchun kutilmagandir.
+                Lekin ichimdagi hislarni yashirgim kelmadi.
+                Endi esa eng qizig‘i — sizning fikringiz men uchun juda muhim. Siz bularni o‘qib nima his qildingiz?
+                Balki men kabi sizning ham qalbingizda kichik bo‘lsa ham iliq hissiyot paydo bo‘lgandir.
+                Har qanday javobni qabul samimiy qabul qilaman 🙂. </p>
+            <textarea id="loveResponse" rows="4" placeholder="Sizning samimiy javobingiz... 📝" required></textarea>
+            <button onclick="saveLoveResponse()">Xatni yuborish 💌</button>
+        </div>
+
+        <!-- PAGE 4: YAKUNIY MINNATDORCHILIK -->
+        <div id="page4" class="page">
+            <div class="emoji-deco"></div>
+            <h2>Ajratgan vaqtingiz uchun rahmat!</h2>
+            <p>Barcha samimiy javoblaringiz uchun ham katta raxmat.</p>
+            <p>O'zingizni asrang!</p>
+        </div>
+
+        <!-- PAGE 5: ADMIN PANEL -->
+        <div id="page5" class="page">
+            <div class="emoji-deco">📊</div>
+            <h2>Qoldirilgan ma'lumotlar:</h2>
+            <div class="result-box">
+                <p><b>💝 Berilgan baho:</b> <span id="resRating">-</span></p>
+                <p><b>💬 Sovg'a haqida taassurot:</b> <span id="resReview">-</span></p>
+                <p><b>💌 Ishorga qaytarilgan javob:</b> <span id="resLove">-</span></p>
+            </div>
+            <button onclick="location.reload()">Orqaga qaytish ↩️</button>
+        </div>
+    </div>
+
+    <script>
+        // ⚙️ USHBU QISMGA O'ZINGIZNING VA QIZNING MA'LUMOTLARINI KIRITING:
+        const GIRL_NAME = "Sabina"; // Qizning ism-familiyasi
+        const GIRL_PHONE = "Karimovna";  // Qizning telefon raqami
+
+        const ADMIN_NAME = "Asilbek"; // Sizning ism-familiyangiz
+        const ADMIN_PHONE = "Rasulov"; // Sizning telefon raqamingiz
+
+        let yesCount = 0; // Ha tugmasi nechchi marta bosilganini sanash uchun
+
+
+        function showHintName() {
+            const nameVal = document.getElementById('loginName').value.trim().toLowerCase();
+            const hintDiv = document.getElementById('hintName');
+
+            if (nameVal.length > 2 && GIRL_NAME.toLowerCase().includes(nameVal)) {
+                hintDiv.innerText = "Xuddi o'sha inson... Davom etishingiz mumkin! 👀";
+            } else if (nameVal.length > 2 && ADMIN_NAME.toLowerCase().includes(nameVal)) {
+                hintDiv.innerText = "Xush kelibsiz, Janob Admin! 😎";
+            } else {
+                hintDiv.innerText = "";
+            }
+        }
+
+        function handleLogin() {
+            const name = document.getElementById('loginName').value.trim().toLowerCase();
+            const phone = document.getElementById('loginPhone').value.trim();
+            const errorDiv = document.getElementById('loginError');
+
+            errorDiv.style.display = "none";
+
+            if (!name || !phone) {
+                alert("Iltimos, ikkala maydonni ham to'ldiring. 😉");
+                return;
+            }
+
+            if (name === ADMIN_NAME.toLowerCase() && phone === ADMIN_PHONE) {
+                showAdminPanel();
+            }
+            else if (name === GIRL_NAME.toLowerCase() && phone === GIRL_PHONE) {
+                switchPage('page1', 'page2');
+            }
+            else {
+                errorDiv.style.display = "block";
+            }
+        }
+
+        function saveRating() {
+            const review = document.getElementById('review').value.trim();
+
+            if (!review) {
+                alert("Iltimos, fikringizni yozib qoldiring. ✨");
+                return;
+            }
+
+            const rating = document.getElementById('rating').value;
+            localStorage.setItem('giftRating', rating);
+            localStorage.setItem('giftReview', review);
+
+            switchPage('page2', 'pageWarn'); // Yangi ogohlantirish sahifasiga o'tadi
+        }
+
+
+        function saveLoveResponse() {
+            const response = document.getElementById('loveResponse').value.trim();
+
+            if (!response) {
+                alert("Fikringiz va javobingiz men uchun juda muhim, iltimos yozib qoldiring. 😊");
+                return;
+            }
+
+            localStorage.setItem('loveResponse', response);
+            switchPage('page3', 'page4');
+        }
+
+        function showAdminPanel() {
+            document.getElementById('resRating').innerText = localStorage.getItem('giftRating') || "Hali baholanmagan 😢";
+            document.getElementById('resReview').innerText = localStorage.getItem('giftReview') || "Hali fikr yozilmagan 😢";
+            document.getElementById('resLove').innerText = localStorage.getItem('loveResponse') || "Hali javob berilmagan 😢";
+
+            switchPage('page1', 'page5');
+        }
+
+        function handleNoClick() {
+            yesCount = 0; // Agar 'ha'dan keyin atay 'yo'q'ni bossa, hisoblagichni yangilaymiz
+            document.getElementById('warnText').innerHTML = "Aha, bemalol joylashib oling. Shoshilmayman, ozgina vaqtingizni olaman xolos. Joylashib bo'lgan bo'lsangiz, tayyormisiz? 🛋️";
+        }
+
+        function handleYesClick() {
+            yesCount++;
+
+            if (yesCount === 1) {
+                document.getElementById('warnText').innerHTML = "Aldamang, hali o'tirganingiz yo'q-ku! Hamma sharoitlarni qilib oling, keyin 'Ha' tugmasini bosing. 😉";
+            } else if (yesCount === 2) {
+                document.getElementById('warnText').innerHTML = "Aniqmi? Keyingi gaplar jiddiyroq bo'lishi mumkin... 🫣";
+            } else if (yesCount === 3) {
+                switchPage('pageWarn', 'page3'); // Hamma shart bajarilgach sevgi ishoriga o'tadi
+            }
+        }
+
+
+        function switchPage(oldPageId, newPageId) {
+            document.getElementById(oldPageId).classList.remove('active');
+            document.getElementById(newPageId).classList.add('active');
+        }
+    </script>
+
+</body>
+
+</html>
